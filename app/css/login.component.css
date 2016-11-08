@@ -19,8 +19,11 @@
 
 .loginContainer {
   float: right;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
 .loginForm {
-
+  vertical-align: middle;
 }

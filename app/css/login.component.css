@@ -2,6 +2,24 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  width: 70%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
+
+.login {
+  border-radius: 0;
+  padding: 1em;
+  background-color: #ffffff;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: auto;
+}
+
+.loginForm {
+  float:right;
+  height: 100%;
+
+}
+

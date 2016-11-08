@@ -19,12 +19,8 @@
 
 .loginContainer {
   float: right;
-  position: relative;
-  height: 100px;
 }
 
 .loginForm {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+
 }

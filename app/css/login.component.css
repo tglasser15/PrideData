@@ -7,7 +7,7 @@
   transform: translate(-50%, -50%);
 }
 
-.login {
+.headerContainer {
   border-radius: 0;
   padding: 1em;
   background-color: #ffffff;
@@ -17,8 +17,14 @@
   height: auto;
 }
 
-.loginForm {
-  float:right;
-  height: 100%;
+.loginContainer {
+  float: right;
+  position: relative;
+  height: 100px;
+}
 
+.loginForm {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

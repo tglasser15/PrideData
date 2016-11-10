@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import './rxjs-extensions';
 import { AppComponent } from './components/app.component';
+import { LoginComponent } from './components/login.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 
 @NgModule({
@@ -16,9 +17,10 @@ import { AppRoutingModule, routedComponents } from './app-routing.module';
   ],
   declarations: [
     AppComponent,
+    LoginComponent,
     routedComponents
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, LoginComponent]
 })
 export class AppModule { }

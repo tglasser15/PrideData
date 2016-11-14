@@ -18,8 +18,8 @@ const firebaseConfig = {
 };
 
 import './rxjs-extensions';
-import { AppComponent } from './components/app.component';
-import { LoginComponent } from './components/login.component';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 
 @NgModule({
@@ -27,11 +27,7 @@ import { AppRoutingModule, routedComponents } from './app-routing.module';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig,{
-      provider: AuthProviders.Google,
-      method: AuthMethods.Popup
-    })
+    HttpModule
   ],
   declarations: [
     AppComponent,

@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
     stylesUrl: ['../css/app.component.css']
 })
 export class AppComponent {
-  title = "PRIDE Data"
+  title = "PRIDE Data";
 }

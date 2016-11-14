@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: '../templates/login.component.html',
   styleUrls: ['../css/login.component.css']
 })
+
 export class LoginComponent {
   /*heroes: Hero[] = [];
 
@@ -24,23 +26,38 @@ export class LoginComponent {
     let link = ['/detail', hero.id];
     this.router.navigate(link);
   } */
-  //arse = require('parse');
-  user = new Parse.User();
-  user.set("username", "my name");
-  user.set("password", "1234");
-  user.set("email", "email@example.com");
+  title = "PRIDE Prep";
 
-  user.signUp(null, {
-    success: function(user) {
-    // Hooray! Let them use the app now.
-  },
-    error: function(user, error) {
-    // Show the error message somewhere and let the user try again.
-    alert("Error: " + error.code + " " + error.message);
-  }
-  });
-
+  /*user = {};
   constructor(
+    public af: AngularFire
+  ) {
+    this.af.auth.subscribe(user => {
+      if(user) {
+        // user logged in
+        this.user = user;
+      }
+      else {
+        // user not logged in
+        this.user = {};
+      }
+    });
+  }
+
+  login(): void {
+    this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Redirect
+    });
+  }
+
+  logout() {
+    this.af.auth.logout();
+  }*/
+
+
+
+  /*constructor(
     private router: Router
-  ) {}
+  ) {}*/
 }

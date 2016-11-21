@@ -1,5 +1,3 @@
-// app.ts
-
 import { Component } from '@angular/core';
 //
 
@@ -7,7 +5,7 @@ import { Component } from '@angular/core';
   moduleId: module.id,
   selector: 'my-app',
   templateUrl: 'app.component.html',
-  stylesUrl: ['app.component.css']
+  styleUrls: ['app.component.css']
 })
 export class AppComponent {
   title = "PRIDE Data";

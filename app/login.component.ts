@@ -11,6 +11,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 export class LoginComponent {
   title = "PRIDE Prep";
+
   items: FirebaseListObservable<any[]>;
   constructor(af: AngularFire) {
     this.items = af.database.list('/items');

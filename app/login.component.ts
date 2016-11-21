@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
   title = "PRIDE Prep";
+  
 
   login(): void {
     this.title = "hello, world";

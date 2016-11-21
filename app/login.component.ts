@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from '@angular/router';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   moduleId: module.id,
@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
   title = "PRIDE Prep";
+  items: FirebaseListObservable<any[]>;
+  constructor(af: AngularFire) {
+    this.items = af.database.list('/items');
+  }
 
   login(): void {
     this.title = "hello, world";

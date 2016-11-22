@@ -1,8 +1,8 @@
-// Observable class extensions
+/** Observable class extensions */
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 
-// Observable operators
+/** Observable operators */
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';

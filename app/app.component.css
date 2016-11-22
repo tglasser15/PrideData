@@ -1,4 +1,4 @@
-/* Master Styles */
+/** Master Styles */
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
@@ -10,7 +10,7 @@ h2, h3 {
   font-weight: lighter;
 }
 body {
-  /*background-color: #d8bb39;*/
+  /**background-color: #d8bb39;*/
   background-image: url("/app/img/weArePridePrep.JPG");
   background-size: cover;
   background-repeat: no-repeat;
@@ -42,7 +42,7 @@ button:disabled {
   cursor: auto;
 }
 
-/* Navigation link styles */
+/** Navigation link styles */
 nav a {
   padding: 5px 10px;
   text-decoration: none;
@@ -62,7 +62,7 @@ nav a.router-link-active {
   color: #039be5;
 }
 
-/* items class */
+/** items class */
 .items {
   margin: 0 0 2em 0;
   list-style-type: none;
@@ -140,7 +140,7 @@ nav a.router-link-active {
   border-radius: 4px 0 0 4px;
 }
 
-/* everywhere else */
+/** everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
 }

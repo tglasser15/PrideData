@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import {
   AngularFireModule,
@@ -18,7 +17,6 @@ import './rxjs-extensions';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     routedComponents
   ],
   imports: [

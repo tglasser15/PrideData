@@ -4,11 +4,7 @@
       <img style="float:left" src="/app/img/logo.png" alt="No Image Available" class="img-rounded" height="50">
     </div>
     <div class="loginContainer">
-      <ul>
-        <li *ngFor="let item of items | async">
-          {{item.$value}}
-        </li>
-      </ul>
+      {{title}}
       <div class="loginForm">
         <form class="form-inline">
           <button *ngIf="(user | json) == '{}'" class="btn btn-primary" (click)="login()">Take me to the PRIDE!</button>

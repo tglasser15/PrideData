@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,23 @@ export class AppComponent {
       if(user) {
         // user logged in
         this.user = user;
-        this.items = af.database.list('/items');
+        const subject = new Subject(); // import {Subject} from 'rxjs/Subject';
+        const query = af.database.list('/items', {
+          query: {
+            orderByChild: 'size',
+            equalTo: subject
+          }
+        });
+        // subscribe to changes
+        query.subscribe(queriedItems => {
+          console.log(queriedItems);
+        });
+
+// trigger the query
+        subject.next('large');
+
+// re-trigger the query!!!
+        subject.next('small');
       }
       else {
         // user not logged in

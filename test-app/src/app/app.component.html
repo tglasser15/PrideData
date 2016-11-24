@@ -1,0 +1,14 @@
+<h1>
+  {{title}}
+  <button md-raised-button (click)="login()">
+    <img width="30" src="google-logo.png" />Use My Google Account
+  </button>
+  <button md-raised-button (click)="logout()">
+    Logout
+  </button>
+  <ul>
+    <li *ngFor="let item of items | async">
+      {{item.$value}}
+    </li>
+  </ul>
+</h1>

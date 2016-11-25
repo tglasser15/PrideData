@@ -18,6 +18,7 @@ export class AppComponent {
       if(user) {
         // user logged in
         this.user = user;
+        console.log(user);
         const subject = new Subject(); // import {Subject} from 'rxjs/Subject';
         const query = af.database.list('/items', {
           query: {
@@ -30,15 +31,18 @@ export class AppComponent {
           console.log(queriedItems);
         });
 
-// trigger the query
+        // trigger the query
         subject.next('large');
 
-// re-trigger the query!!!
+        // re-trigger the query!!!
         subject.next('small');
+
+        this.title = "logged in";
       }
       else {
         // user not logged in
         this.user = {};
+        this.title = "logged out";
       }
     });
 

@@ -1,0 +1,61 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <img style="float:left" src="/app/img/logo.png" alt="No Image Available" class="img-rounded" height="70">
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul *ngIf="(user | json) != '{}'" class="nav navbar-nav">
+        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">View PLP - Playlists</a></li>
+            <li><a href="#">View PLP - Cognitive Scores</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <div class="btn-group">
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Welcome{{ (user | json) == '{}' ? '' : ' ' + user.auth.displayName }}!<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a *ngIf="(user | json) == '{}'"
+                   data-toggle="modal"
+                   data-target="#myModal">Login</a>
+            </li>
+            <li><a *ngIf="(user | json) != '{}'" (click)="logout()">Logout</a></li>
+          </ul>
+        </div>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<router-outlet></router-outlet>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">PRIDE Prep Member?</h4>
+      </div>
+      <div class="modal-body">
+        You may only log in if you are a PRIDE Prep member
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="login()">Take me to the PRIDE!</button>
+        <!--<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+        sagittis lacus vel augue laoreet rutrum faucibus.">
+          Popover on bottom
+        </button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Carousel for images in the back? -->

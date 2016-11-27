@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app.component';
+import { NotificationService } from "./services/notification.service"
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import {
   AngularFireModule,
@@ -17,6 +18,7 @@ import './rxjs-extensions';
 @NgModule({
   declarations: [
     AppComponent,
+    NotificationService,
     routedComponents
   ],
   imports: [

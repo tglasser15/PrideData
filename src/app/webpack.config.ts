@@ -1,3 +1,4 @@
+var module;
 module.exports = {
 
   // Currently we need to add '.ts' to the resolve.extensions array.

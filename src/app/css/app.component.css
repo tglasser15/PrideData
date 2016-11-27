@@ -19,5 +19,19 @@
   position:relative;
 }
 
+.dropdown-menu a {
+  background-color: #ffffff;
+}
+
+.nav > li > a {
+  margin-top: 0;
+  padding-top: 35px;
+  font-size: large;
+}
+
+.btn-group > button {
+  margin-top: 20px;
+}
+
 
 

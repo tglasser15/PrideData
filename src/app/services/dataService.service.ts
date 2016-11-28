@@ -1,7 +1,15 @@
+/** Angular Directives */
 import { Component, Injectable, Inject } from '@angular/core';
-import { UserItem } from '../models/UserItem';
 import { Http, Headers } from '@angular/http';
+
+/** Models */
+import { UserItem } from '../models/UserItem';
+
+/** Other Libraries */
 import * as constants from '../constants/constants';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
+
 
 @Injectable()
 @Inject(Http)
@@ -26,13 +34,13 @@ export class DataService {
         let result:UserItem[] = [];
         if (users && users.results) {
           users.results.forEach((user)=> {
-            result.push(new UserItem(user.objectId, user.username,
-              user.email));
+            //console.log(user);
+            result.push(new UserItem(user.objectId, user.username, user.email));
           });
         }
         this._users = this._users.concat(result);
-        return result;
-      });
+        return result[0];
+      })
   }
 
   addUser(item) {
@@ -63,4 +71,10 @@ export class DataService {
       headers: this.headers
     });
   }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+
 }

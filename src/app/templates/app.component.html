@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav *ngIf="(test | json) != '{}'" class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -6,7 +6,7 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul *ngIf="(user | json) != '{}'" class="nav navbar-nav">
+      <ul class="nav navbar-nav">
         <li class="active"><a href="#" (click)="test()">Home<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data<span class="caret"></span></a>
@@ -16,17 +16,18 @@
           </ul>
         </li>
       </ul>
+      <!-- Navbar on the right -->
       <ul class="nav navbar-nav navbar-right">
         <div class="btn-group">
           <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Welcome{{ (user | json) == '{}' ? '' : ' ' + user.auth.displayName }}!<span class="caret"></span>
+            Welcome!<span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a *ngIf="(user | json) == '{}'"
+            <li><a
                    data-toggle="modal"
                    data-target="#myModal">Login</a>
             </li>
-            <li><a *ngIf="(user | json) != '{}'" (click)="logout()">Logout</a></li>
+            <li><a  (click)="logout()">Logout</a></li>
           </ul>
         </div>
       </ul>

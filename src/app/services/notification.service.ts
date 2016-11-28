@@ -43,6 +43,6 @@ export class NotificationService {
   }
 
   error(text: String) {
-    this.note = text;
+    //this.note = text;
   }
 }

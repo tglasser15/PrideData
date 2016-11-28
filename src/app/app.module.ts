@@ -13,6 +13,7 @@ import {
 } from "angularfire2";
 import {config} from './../environments/firebase.config';
 import './rxjs-extensions';
+import {DataService} from "./services/dataService.service";
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import './rxjs-extensions';
       method: AuthMethods.Popup
     })
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

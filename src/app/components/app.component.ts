@@ -1,7 +1,6 @@
 /** Angular Directives */
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import { Http } from '@angular/http';
 
 /** Services */
 import { NotificationService } from '../services/notification.service';
@@ -20,7 +19,9 @@ import { Subject } from 'rxjs/Subject';
   templateUrl: '../templates/app.component.html',
   styleUrls: ['../css/app.component.css']
 })
+
 export class AppComponent implements OnInit {
+  /** Initializers */
   title = "PRIDE Prep";
   msg = "hello";
 

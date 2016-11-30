@@ -14,14 +14,36 @@ import 'rxjs/Rx';
 @Injectable()
 @Inject(Http)
 export class DataService {
+  currentUser:UserItem;
   _users:UserItem[] = [];
   headers: Headers = new Headers();
+  parseUrl = "https://parseapi.back4app.com/";
   private http:Http;
+
 
   constructor(http:Http) {
     this.http = http;
     this.headers.append('X-Parse-Application-Id', constants.AppId);
     this.headers.append('X-Parse-REST-API-Key', constants.AppKey);
+  }
+
+  login(user) {
+    let url = this.parseUrl + '1/login?username=' + user.username + '&password=' + user.password;
+    console.log(user);
+    console.log(url);
+    return this.http.get(url, {
+      headers: this.headers
+    }).map((response:any)=> {
+      return response.json();
+    })
+      .map((user:any) => {
+        if (user && user.results) {
+          console.log(user.results);
+          this.currentUser = new UserItem(user.objectId, user.username, user.email);
+        }
+        console.log(this.currentUser);
+        return this.currentUser;
+      })
   }
 
   getUsers() {

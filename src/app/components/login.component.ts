@@ -17,4 +17,10 @@ export class LoginComponent {
   login() {
     console.log(this.model);
   }
+
+  submitted = false;
+
+  onSubmit() {
+    this.submitted = true;
+  }
 }

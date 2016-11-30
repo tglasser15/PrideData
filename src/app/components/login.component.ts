@@ -7,5 +7,14 @@ import {Component} from "@angular/core/src/metadata/directives";
   styleUrls: ['../css/login.component.css']
 })
 export class LoginComponent {
+  model = {
+    username: "",
+    password: ""
+  };
 
+  constructor() {}
+
+  login() {
+    console.log(this.model);
+  }
 }

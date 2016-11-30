@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
   msg = "hello";
 
   user:UserItem;
-  test = {};
-  user = {};
-  public users:UserItem[] = [];
+  test2 = {};
+  //public users:UserItem[] = [];
+  public users:UserItem;
 
   constructor(private dataService:DataService, private route: ActivatedRoute) {
     route.data

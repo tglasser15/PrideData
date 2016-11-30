@@ -1,6 +1,26 @@
-body {
-  background-image: url("/../img/weArePridePrep.JPG") !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
+#main {
+  min-width: 250px;
+  max-width: 300px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
+
+.right {
+  padding-left: 0 !important;
+}
+
+.left {
+  padding-right: 0 !important;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.row {
+  margin: 0;
+}
+

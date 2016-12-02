@@ -1,6 +1,6 @@
 /** Angular Directives */
 import { Component, Injectable, Inject } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers,  } from '@angular/http';
 
 /** Models */
 import { UserItem } from '../models/UserItem';
@@ -9,6 +9,7 @@ import { UserItem } from '../models/UserItem';
 import * as constants from '../constants/constants';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
+import {parseCookieValue} from "@angular/platform-browser/src/browser/browser_adapter";
 
 
 @Injectable()
@@ -25,25 +26,77 @@ export class DataService {
     this.http = http;
     this.headers.append('X-Parse-Application-Id', constants.AppId);
     this.headers.append('X-Parse-REST-API-Key', constants.AppKey);
+
   }
 
-  login(user) {
-    let url = this.parseUrl + '1/login?username=' + user.username + '&password=' + user.password;
-    console.log(user);
+  login(user): Promise<UserItem> {
+    let url = this.parseUrl + 'login?username=' + user.username + '&password=' + user.password;
     console.log(url);
     return this.http.get(url, {
       headers: this.headers
-    }).map((response:any)=> {
-      return response.json();
+    }).toPromise()
+      .then((response:any)=> {
+        localStorage.setItem('parse', response.json().sessionToken);
+        //this.headers.append('X-Parse-Session-Token', response.json().sessionToken);
+        return response.json();
     })
-      .map((user:any) => {
-        if (user && user.results) {
-          console.log(user.results);
+      .then((user:any) => {
+        if (user) {
           this.currentUser = new UserItem(user.objectId, user.username, user.email);
         }
-        console.log(this.currentUser);
-        return this.currentUser;
+        return Promise.resolve(this.currentUser);
+
       })
+      .catch((error:any) => {
+        console.log(error)
+      });
+  }
+
+  logout(): Promise<UserItem> {
+    this.headers.append('X-Parse-Session-Token', localStorage.getItem('parse'));
+    let url = this.parseUrl + 'logout';
+    return this.http.post(url, {}, {
+      headers: this.headers
+    }).toPromise()
+      .then((response:any)=> {
+        return response.json();
+      })
+      .then((user:any) => {
+        localStorage.removeItem('parse');
+        console.log(user);
+        // if (user) {
+        //   this.currentUser = new UserItem(user.objectId, user.username, user.email);
+        // }
+        //
+        // return Promise.resolve(this.currentUser);
+
+      })
+      .catch((error:any) => {
+        console.log(error)
+      });
+  }
+
+  getCurrentUser(): Promise<UserItem> {
+    this.headers.append('X-Parse-Session-Token', localStorage.getItem('parse'));
+    let url = this.parseUrl + 'users/me/';
+    return this.http.get(url, {
+      headers: this.headers
+    }).toPromise()
+      .then((response:any)=> {
+        return response.json();
+      })
+      .then((user:any) => {
+        console.log(user);
+        // if (user) {
+        //   this.currentUser = new UserItem(user.objectId, user.username, user.email);
+        // }
+        //
+        // return Promise.resolve(this.currentUser);
+
+      })
+      .catch((error:any) => {
+        console.log(error)
+      });
   }
 
   getUsers() {

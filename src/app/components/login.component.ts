@@ -17,20 +17,19 @@ export class LoginComponent  {
     username: "tommy",
     password: "1234"
   };
-  user: UserItem;
+  currentUser: UserItem;
 
   submitted = false;
 
   constructor(private dataService:DataService) {}
 
-  ngOnInit() {
-    this.dataService.getUsers().subscribe(res => this.user = res)
-  }
+  ngOnInit() {}
 
   login() {
-    this.submitted = true;
-    console.log(this.model);
-    console.log(this.user);
+    this.dataService.login(this.model).then((user:any) => {
+      this.currentUser = user;
+      console.log(this.currentUser);
+    });
   }
 
 }

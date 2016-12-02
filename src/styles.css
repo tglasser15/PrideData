@@ -11,7 +11,10 @@ h2, h3 {
 }
 body {
   /**background-color: #d8bb39;*/
-
+  background-image: url("/app/img/weArePridePrep.JPG");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
 }
 body, input[text], button {
   color: #888;

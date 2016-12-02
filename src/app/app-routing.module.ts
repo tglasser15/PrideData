@@ -13,7 +13,7 @@ import {DataResolver} from "./resolves/DataResolver";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {

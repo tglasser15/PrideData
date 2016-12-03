@@ -19,6 +19,7 @@ export class DataService {
   _users:UserItem[] = [];
   headers: Headers = new Headers();
   parseUrl = "https://parseapi.back4app.com/";
+  loggedInState = false;
   private http:Http;
 
 
@@ -27,6 +28,10 @@ export class DataService {
     this.headers.append('X-Parse-Application-Id', constants.AppId);
     this.headers.append('X-Parse-REST-API-Key', constants.AppKey);
 
+  }
+
+  test() {
+    this.loggedInState = true;
   }
 
   login(user): Promise<UserItem> {
@@ -151,5 +156,8 @@ export class DataService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
+
+  /** JIC */
+  removeAllTokens() {}
 
 }

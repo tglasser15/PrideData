@@ -19,9 +19,9 @@ export class LoginComponent  {
   };
   currentUser: UserItem;
 
-  submitted = false;
+  constructor(private dataService:DataService) {
 
-  constructor(private dataService:DataService) {}
+  }
 
   ngOnInit() {}
 
@@ -29,6 +29,7 @@ export class LoginComponent  {
     this.dataService.login(this.model).then((user:any) => {
       this.currentUser = user;
       console.log(this.currentUser);
+      //this.dataService
     });
   }
 

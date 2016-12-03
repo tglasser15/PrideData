@@ -2,6 +2,8 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
+import {LoginComponent} from './login.component';
+
 /** Services */
 import { NotificationService } from '../services/notification.service';
 import { DataService } from '../services/dataService.service';
@@ -30,12 +32,14 @@ export class AppComponent implements OnInit {
   //public users:UserItem[] = [];
   public users:UserItem;
 
-  constructor(private dataService:DataService, private route: ActivatedRoute) {
-    route.data
+  constructor(private dataService:DataService, private route: ActivatedRoute, private loginComponent: LoginComponent) {
+
+
+    /**route.data
       //.do(console.log)
       .subscribe(
         data => this.user = data['user']
-    );
+    );*/
   }
 
   ngOnInit() {

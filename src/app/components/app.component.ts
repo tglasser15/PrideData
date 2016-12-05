@@ -2,8 +2,6 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {LoginComponent} from './login.component';
-
 /** Services */
 import { NotificationService } from '../services/notification.service';
 import { DataService } from '../services/dataService.service';
@@ -17,23 +15,23 @@ import { Subject } from 'rxjs/Subject';
 
 
 @Component({
-  selector: 'app-root',
+  selector: 'body',
+  host: {
+    "[style.background-image]":"bodyBackgroundImage()"
+  },
   templateUrl: '../templates/app.component.html',
   styleUrls: ['../css/app.component.css']
 })
 
 export class AppComponent implements OnInit {
   /** Initializers */
-  title = "PRIDE Prep";
-  msg = "hello";
-
-  user:UserItem;
-  test2 = {};
-  //public users:UserItem[] = [];
+  isLoggedIn = false;
+  currentUser:UserItem;
   public users:UserItem;
 
-  constructor(private dataService:DataService, private route: ActivatedRoute, private loginComponent: LoginComponent) {
-
+  /** Constructor */
+  constructor(private dataService:DataService, private route: ActivatedRoute) {
+    this.isLoggedIn = dataService.loggedInState;
 
     /**route.data
       //.do(console.log)
@@ -42,21 +40,28 @@ export class AppComponent implements OnInit {
     );*/
   }
 
+  /** ngOnInit() */
   ngOnInit() {
-    this.dataService.getUsers().subscribe(res => this.users = res);
-    //console.log(this.users);
+    this.dataService.getCurrentUser().then((user: any) => {
+      this.currentUser = user;
+      this.isLoggedIn = true;
+    });
   }
 
-  test() {
+  /** Host binding function */
+  bodyBackgroundImage() {
+    return this.isLoggedIn ? 'url("/app/img/weArePridePrep.JPG")': 'none';
+  }
+
+  /**test() {
     this.dataService.getUsers().subscribe(res => {
         this.users = res;
         this.user = this.users[0];
     });
     console.log(this.users);
-  }
+  }*/
 
   login() {
-
 
   }
 

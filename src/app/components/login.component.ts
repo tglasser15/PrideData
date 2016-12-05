@@ -1,5 +1,6 @@
 /** Angular directives */
 import {Component, OnInit} from "@angular/core/";
+import {Router} from '@angular/router';
 
 /** Services */
 import {DataService} from "../services/dataService.service";
@@ -19,18 +20,19 @@ export class LoginComponent  {
   };
   currentUser: UserItem;
 
-  constructor(private dataService:DataService) {
+  constructor(private dataService:DataService, private router:Router) {
 
   }
 
   ngOnInit() {}
 
-  login() {
+  login(): void {
     this.dataService.login(this.model).then((user:any) => {
-      this.currentUser = user;
-      console.log(this.currentUser);
-      //this.dataService
+      if (user) {
+        this.dataService.loggedInState = true;
+        let link = ['/home'];
+        this.router.navigate(link);
+      }
     });
   }
-
 }

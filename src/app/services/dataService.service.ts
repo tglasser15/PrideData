@@ -20,6 +20,7 @@ export class DataService {
   headers: Headers = new Headers();
   parseUrl = "https://parseapi.back4app.com/";
   loggedInState = false;
+
   private http:Http;
 
 
@@ -28,10 +29,6 @@ export class DataService {
     this.headers.append('X-Parse-Application-Id', constants.AppId);
     this.headers.append('X-Parse-REST-API-Key', constants.AppKey);
 
-  }
-
-  test() {
-    this.loggedInState = true;
   }
 
   login(user): Promise<UserItem> {
@@ -92,11 +89,11 @@ export class DataService {
       })
       .then((user:any) => {
         console.log(user);
-        // if (user) {
-        //   this.currentUser = new UserItem(user.objectId, user.username, user.email);
-        // }
-        //
-        // return Promise.resolve(this.currentUser);
+        if (user) {
+          this.currentUser = new UserItem(user.objectId, user.username, user.email);
+        }
+
+        return Promise.resolve(this.currentUser);
 
       })
       .catch((error:any) => {

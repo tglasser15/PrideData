@@ -1,0 +1,41 @@
+
+.dropdown-menu a {
+  background-color: #ffffff;
+}
+
+.nav > li > a {
+  margin-top: 0;
+  padding-top: 35px;
+  font-size: large;
+}
+
+.btn-group > button {
+  margin-top: 20px;
+}
+
+/*********** Obsolete: Used for header-bar *********/
+/*
+.headerContainer {
+  border-radius: 0;
+  background-color: #ffffff;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 60px;
+}
+
+.loginContainer {
+  float: right;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.loginForm {
+  vertical-align: middle;
+  position:relative;
+}
+*/
+
+
+

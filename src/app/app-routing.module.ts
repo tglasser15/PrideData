@@ -1,19 +1,18 @@
 /** Modules */
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router } from '@angular/router';
 
 /** Components */
-import {AppComponent} from "./components/app.component";
 import {LoginComponent} from "./components/login.component";
+import {HomeComponent} from "./components/home.component";
 
 /** Resolvers */
 import {DataResolver} from "./resolves/DataResolver";
 
-
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
@@ -22,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: AppComponent,
+    component: HomeComponent,
     resolve: {
       user: DataResolver
     }
@@ -33,6 +32,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 
-export const routedComponents = [LoginComponent];
+export const RoutedComponents = [LoginComponent];

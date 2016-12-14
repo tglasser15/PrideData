@@ -33,7 +33,7 @@ import { Router } from '@angular/router';
     }
   `]
 })
-export class NotificationService {
+export class ToastService {
   title = "PRIDE Prep";
   @Input('msg') note: string;
 

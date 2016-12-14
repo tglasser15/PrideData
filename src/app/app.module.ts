@@ -1,16 +1,18 @@
 /** Modules */
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { AppRoutingModule, routedComponents } from './app-routing.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {AppRoutingModule, RoutedComponents} from './app-routing.module';
 
 /** Components */
-import { AppComponent } from './components/app.component';
-import { LoginComponent } from './components/login.component';
+import {AppComponent} from './components/app.component';
+import {LoginComponent} from './components/login.component';
+import {HeaderComponent} from './components/header.component';
+import {HomeComponent} from './components/home.component';
 
 /** Services */
-import {NotificationService} from "./services/notification.service"
+import {ToastService} from "./services/toastService.service"
 import {DataService} from "./services/dataService.service";
 
 /** Other libraries */
@@ -21,7 +23,9 @@ import {DataResolver} from "./resolves/DataResolver";
   declarations: [
     AppComponent,
     LoginComponent,
-    routedComponents
+    HeaderComponent,
+    HomeComponent,
+    RoutedComponents
   ],
   imports: [
     BrowserModule,
@@ -30,8 +34,10 @@ import {DataResolver} from "./resolves/DataResolver";
     AppRoutingModule
   ],
   providers: [
+    /** Services */
     DataService,
-    NotificationService,
+    ToastService,
+    /** Resolvers */
     DataResolver
   ],
   bootstrap: [AppComponent]

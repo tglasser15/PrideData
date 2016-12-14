@@ -3,7 +3,7 @@ import { Component, Injectable, Inject } from '@angular/core';
 import { Http, Headers,  } from '@angular/http';
 
 /** Models */
-import { UserItem } from '../models/UserItem';
+import { UserItem } from '../models/userItem';
 
 /** Other Libraries */
 import * as constants from '../constants/constants';
@@ -15,22 +15,20 @@ import {parseCookieValue} from "@angular/platform-browser/src/browser/browser_ad
 @Injectable()
 @Inject(Http)
 export class DataService {
-  currentUser:UserItem;
-  _users:UserItem[] = [];
+  /** Initializers */
+  currentUser: UserItem;
+  _users: UserItem[] = [];
   headers: Headers = new Headers();
   parseUrl = "https://parseapi.back4app.com/";
-  loggedInState = false;
-
-  private http:Http;
-
+  private http:Http; /** Rest API */
 
   constructor(http:Http) {
     this.http = http;
     this.headers.append('X-Parse-Application-Id', constants.AppId);
     this.headers.append('X-Parse-REST-API-Key', constants.AppKey);
-
   }
 
+  /** Logs user into the platform */
   login(user): Promise<UserItem> {
     let url = this.parseUrl + 'login?username=' + user.username + '&password=' + user.password;
     console.log(url);
@@ -54,6 +52,7 @@ export class DataService {
       });
   }
 
+  /** Logs user out of the platform */
   logout(): Promise<UserItem> {
     this.headers.append('X-Parse-Session-Token', localStorage.getItem('parse'));
     let url = this.parseUrl + 'logout';
@@ -65,12 +64,8 @@ export class DataService {
       })
       .then((user:any) => {
         localStorage.removeItem('parse');
-        console.log(user);
-        // if (user) {
-        //   this.currentUser = new UserItem(user.objectId, user.username, user.email);
-        // }
-        //
-        // return Promise.resolve(this.currentUser);
+        this.currentUser = user;
+        return Promise.resolve(this.currentUser);
 
       })
       .catch((error:any) => {
@@ -78,6 +73,7 @@ export class DataService {
       });
   }
 
+  /** Check to see if the current user is still logged in */
   getCurrentUser(): Promise<UserItem> {
     this.headers.append('X-Parse-Session-Token', localStorage.getItem('parse'));
     let url = this.parseUrl + 'users/me/';
@@ -101,6 +97,7 @@ export class DataService {
       });
   }
 
+  /** Return an array of users */
   getUsers() {
     return this.http.get('https://parseapi.back4app.com/classes/_User', {
       headers: this.headers
@@ -120,6 +117,7 @@ export class DataService {
       })
   }
 
+  /** Obsolete for now
   addUser(item) {
     let userData = {
       "FullName": item.fullname,
@@ -148,6 +146,7 @@ export class DataService {
       headers: this.headers
     });
   }
+  */
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only

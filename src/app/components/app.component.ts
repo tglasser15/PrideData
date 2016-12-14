@@ -1,5 +1,5 @@
 /** Angular Directives */
-import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 /** Services */
@@ -26,8 +26,8 @@ import { Subject } from 'rxjs/Subject';
 export class AppComponent implements OnInit {
   /** Initializers */
   isLoggedIn = false;
-  currentUser:UserItem;
-  public users:UserItem;
+  currentUser: UserItem;
+  public users: UserItem;
 
   /** Constructor */
   constructor(private dataService:DataService, private route: ActivatedRoute) {
@@ -42,10 +42,7 @@ export class AppComponent implements OnInit {
 
   /** ngOnInit() */
   ngOnInit() {
-    this.dataService.getCurrentUser().then((user: any) => {
-      this.currentUser = user;
-      this.isLoggedIn = true;
-    });
+
   }
 
   /** Host binding function */
@@ -53,19 +50,4 @@ export class AppComponent implements OnInit {
     return this.isLoggedIn ? 'url("/app/img/weArePridePrep.JPG")': 'none';
   }
 
-  /**test() {
-    this.dataService.getUsers().subscribe(res => {
-        this.users = res;
-        this.user = this.users[0];
-    });
-    console.log(this.users);
-  }*/
-
-  login() {
-
-  }
-
-  logout() {
-
-  }
 }

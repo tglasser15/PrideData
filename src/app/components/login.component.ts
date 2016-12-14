@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 
 /** Services */
 import {DataService} from "../services/dataService.service";
+import {NotificationService} from "../services/notification.service";
 
 /** Models */
 import {UserItem} from "../models/UserItem";
@@ -20,7 +21,9 @@ export class LoginComponent  {
   };
   currentUser: UserItem;
 
-  constructor(private dataService:DataService, private router:Router) {
+  constructor(private dataService: DataService,
+              private notificationService: NotificationService,
+              private router: Router) {
 
   }
 

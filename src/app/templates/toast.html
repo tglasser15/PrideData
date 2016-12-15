@@ -1,0 +1,12 @@
+<div class="toast-container">
+  <div class="flex flex-center-vertical toast" ng-repeat="toast in toasts" ng-class="{'slideOut': toast.slideOut,  'slideIn': toast.slideIn, 'error': toast.error, 'success': toast.success}">
+    <img ng-if="!toast.error && !toast.success" src="./img/ball-icon-large.svg"/>
+    <img ng-if="toast.error" src="./img/alert-icon-large.svg"/>
+    <img ng-if="toast.success" src="./img/success-icon-large.svg"/>
+    <p class="flex-one">{{toast.message}}</p>
+    <div ng-click="closeToast(toast)">
+      <img ng-if="!toast.error && !toast.success" src="./img/close-icon-dark.svg"/>
+      <img ng-if="toast.error || toast.success" src="./img/close-icon.svg"/>
+    </div>
+  </div>
+</div>

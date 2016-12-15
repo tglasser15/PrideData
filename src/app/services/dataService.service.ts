@@ -1,9 +1,9 @@
 /** Angular Directives */
-import { Component, Injectable, Inject } from '@angular/core';
-import { Http, Headers,  } from '@angular/http';
+import {Injectable, Inject} from '@angular/core';
+import {Http, Headers} from '@angular/http';
 
 /** Models */
-import { UserItem } from '../models/userItem';
+import {UserItem} from '../models/userItem';
 
 /** Other Libraries */
 import * as constants from '../constants/constants';
@@ -20,12 +20,17 @@ export class DataService {
   _users: UserItem[] = [];
   headers: Headers = new Headers();
   parseUrl = "https://parseapi.back4app.com/";
+  isLoggedIn = false;
   private http:Http; /** Rest API */
 
   constructor(http:Http) {
     this.http = http;
     this.headers.append('X-Parse-Application-Id', constants.AppId);
     this.headers.append('X-Parse-REST-API-Key', constants.AppKey);
+  }
+
+  getLoginStatus() {
+    return localStorage.getItem('parse') ? this.isLoggedIn = true : this.isLoggedIn = false;
   }
 
   /** Logs user into the platform */

@@ -1,4 +1,3 @@
-
 .dropdown-menu a {
   background-color: #ffffff;
 }
@@ -7,6 +6,10 @@
   margin-top: 0;
   padding-top: 35px;
   font-size: large;
+}
+
+.navbar-default {
+  margin-bottom: 0;
 }
 
 .btn-group > button {

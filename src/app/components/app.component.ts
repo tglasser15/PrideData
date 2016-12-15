@@ -1,6 +1,7 @@
 /** Angular Directives */
 import {Component, OnInit} from '@angular/core';
 import {DataService} from "../services/dataService.service";
+import {ToastService} from "../services/toastService.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -17,12 +18,10 @@ export class AppComponent implements OnInit {
   constructor(private dataService: DataService,
               private router: Router){
     router.events.subscribe((val) => {
-      if (!localStorage.getItem('parse')) {
-        this.isLoggedIn = false;
+      this.isLoggedIn = dataService.getLoginStatus();
+      if (!this.isLoggedIn) {
         let link = ['/login'];
         this.router.navigate(link);
-      } else {
-        this.isLoggedIn = true;
       }
     })
   }
